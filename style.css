@@ -1,0 +1,43 @@
+*{
+    font-family: 'Gloria Hallelujah', cursive;
+    font-weight: bold;
+   
+    
+}
+
+body{
+    background-color: rgb(184, 182, 182);
+}
+
+body main p{
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: xx-large;
+    text-align: center;
+}
+
+
+}
+#allimages{
+    position: absolute;
+    float: right;
+    bottom: 0%;
+    width: 10;
+    padding: 5px;
+}
+
+#middle-image{
+    position: relative;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+
+}
+
+#right-image{
+    position: absolute;
+    left: 0%;
+    width: 15%;
+    display: flex;
+    
+}

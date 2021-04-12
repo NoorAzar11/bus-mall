@@ -94,42 +94,42 @@ function renderImages() {
 
 renderImages();
 
-//clicking part 
+// //clicking part 
 
-imgL.addEventListener('click', cliking);
-imgM.addEventListener('click', cliking);
-imgR.addEventListener('click', cliking);
-//adding cliking and user attemps<highattemps
-function cliking(event) {
-    console.log(event.target.id);
-    userAttemps++;
-    //console.log(userAttemps);
+// imgL.addEventListener('click', cliking);
+// imgM.addEventListener('click', cliking);
+// imgR.addEventListener('click', cliking);
+// //adding cliking and user attemps<highattemps
+// function cliking(event) {
+//     console.log(event.target.id);
+//     userAttemps++;
+//     //console.log(userAttemps);
 
-    if (userAttemps < highAttemps) {
-        if (event.target.id === 'left-image') {
-            Busmall.allimg[imgLindex].vote++
-        }
-        else {
-            Busmall.allimg[imgMindex].vote++
-        }
-       else {
-            Busmall.allimg[imgRindex].vote++
-        }else if{
-            let list=document.getElementById('shownresults');
-            let busmalllistresult;
-            for(i = 0; i<= Busmall.allimg.length; i++) {
-            busmalllistresult = document.createElement('li');
-            list.appendChild(busmalllistresult);
-            busmalllistresult.textContent = `${Busmall.allimg[i].name}` had`${Busmall.allimg[i].vote}Votes` and was seen times.
+//     if (userAttemps < highAttemps) {
+//         if (event.target.id === 'left-image') {
+//             Busmall.allimg[imgLindex].vote++
+//         }
+//         else {
+//             Busmall.allimg[imgMindex].vote++
+//         }
+//        else {
+//             Busmall.allimg[imgRindex].vote++
+//         }else if{
+//             let list=document.getElementById('shownresults');
+//             let busmalllistresult;
+//             for(i = 0; i<= Busmall.allimg.length; i++) {
+//             busmalllistresult = document.createElement('li');
+//             list.appendChild(busmalllistresult);
+//             busmalllistresult.textContent = `${Busmall.allimg[i].name}` had`${Busmall.allimg[i].vote}Votes` and was seen times.
 
-            }
+//             }
 
-        imgL.removeEventListener('click', cliking);
-        imgM.removeEventListener('click', cliking);
-        imgR.removeEventListener('click', cliking);
-    }
+//         imgL.removeEventListener('click', cliking);
+//         imgM.removeEventListener('click', cliking);
+//         imgR.removeEventListener('click', cliking);
+//     }
 
-}
-}
-console.log(Busmall.allimg);
-renderImages();
+// }
+// }
+// console.log(Busmall.allimg);
+// renderImages();
