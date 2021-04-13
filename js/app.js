@@ -13,6 +13,9 @@ let userAttemps = 0;
 let imgLindex = 0;
 let imgMindex = 0;
 let imgRindex = 0;
+let arraynames = [];
+let arrayofvotes = [];
+let arrayofapearing = [];
 //contactor function with pascal case first latter will be B
 function Busmall(name, imgpath, timesshown) {
     //create attribute
@@ -24,6 +27,7 @@ function Busmall(name, imgpath, timesshown) {
     //(this) will be refering to new attribute(obeject) that we created,array has every thing
     //allimg.push(this)
     Busmall.allimg.push(this);
+    arraynames.push(this.name);
 }
 //globel array
 //let allimg=[];
@@ -60,7 +64,7 @@ function renderImages() {
     imgLindex = randomindex();
     imgMindex = randomindex();
     imgRindex = randomindex();
-    while (imgLindex === imgMindex || imgLindex === imgRindex || imgMindex === imgRindex) {
+    while (imgLindex === imgMindex || imgLindex === imgRindex || imgMindex === imgRindex || imgLindex === imgRindex || imgRindex === imgMindex || imgMindex === imgLindex) {
         imgLindex = randomindex();
         imgMindex = randomindex();
         imgRindex = randomindex();
@@ -109,6 +113,18 @@ function cliking(event) {
         //button.addEventListener('click', apearing);
         getButton.addEventListener('click', apearing);
         // button.hidden = false;
+
+        for (let i = 0; i < Busmall.allimg.length; i++) {
+            arrayofvotes.push(Busmall.allimg[i].vote);
+            arrayofapearing.push(Busmall.allimg[i].timesshown);
+
+        }
+        console.log(arrayofvotes);
+
+        // show the chart
+        chart();
+
+
         function apearing() {
             getButton.removeEventListener('click', apearing);
             let list = document.getElementById('shownresults');
@@ -125,3 +141,56 @@ function cliking(event) {
     }
 }
 ///console.log(Busmall.allimg);
+
+//chartjs
+function chart() {
+    let chjs = document.getElementById('myChart').getContext('2d');
+
+    let chart = new Chart(chjs, {
+        // what type is the chart
+        type: 'bar',
+
+        //  the data for showing
+        data: {
+            //  for the names
+            labels: arraynames,
+
+            datasets: [
+                {
+                    label: 'BusMallVotes',
+                    data: arrayofvotes,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(201, 203, 207, 0.2)'
+                    ],
+
+                    borderWidth: 1
+                },
+
+                {
+                    label: 'how many time user seen it',
+                    data: arrayofapearing,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(201, 203, 207, 0.2)'
+                    ],
+
+                    borderWidth: 1
+                }
+
+            ]
+        },
+        options: {}
+    });
+
+}
