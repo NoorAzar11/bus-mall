@@ -82,7 +82,7 @@ function renderImages() {
 
     while (imgLindex === imgMindex || imgLindex === imgRindex || imgMindex === imgRindex) {
         imgLindex = randomindex();
-
+        imgMindex = randomindex();
         imgRindex = randomindex();
 
     }
@@ -117,14 +117,14 @@ function cliking(event) {
     if (userAttemps < highAttemps) {
         if (event.target.id === 'left-image') {
             Busmall.allimg[imgLindex].vote++;
+            renderImages();
         }
         else if (event.target.id === 'middle-image') {
             Busmall.allimg[imgMindex].vote++;
+            renderImages();
         }
         else if (event.target.id === 'right-image') {
             Busmall.allimg[imgRindex].vote++;
-
-
             renderImages();
 
             //creatinglist
@@ -132,9 +132,7 @@ function cliking(event) {
         } else {
 
             let list = document.getElementById('shownresults');
-
-            let button = document.getElementById('button');
-
+            let button = document.getElementById('button1');
             //button.addEventListener('click', apearing);
             button.addEventListener('click', apearing);
             button.hidden = false;
@@ -167,4 +165,3 @@ function cliking(event) {
 
 }
 ///console.log(Busmall.allimg);
-renderImages();
