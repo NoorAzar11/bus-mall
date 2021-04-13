@@ -16,7 +16,6 @@ body main p{
 }
 
 
-}
 div{
     padding-left: 150px;
     /* bottom: 0%;
@@ -26,7 +25,7 @@ div{
 }
 #left-image{
     background-color: blueviolet;
-    float: left;
+    /* float: left; */
     width: 33.33%;
     padding: 5px;
     size: 20%;
@@ -38,7 +37,7 @@ div{
 
 #middle-image{
 background-color: rgb(16, 16, 54);
-float: left;
+/* float: left; */
 width: 33.33%;
 padding: 5px;
 size: 20%;
@@ -48,7 +47,7 @@ size: 20%;
 #right-image{
     background-color: black;
     
-    float: left;
+    /* float: left; */
     width: 33.33%;
     padding: 5px;
     size: 20%;
