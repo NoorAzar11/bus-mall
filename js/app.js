@@ -60,11 +60,13 @@ function randomindex() {
 }
 //console.log(randomindex());
 //rendering for images or display them 
+let diffpic=[];
 function renderImages() {
+    console.log('before',diffpic);
     imgLindex = randomindex();
     imgMindex = randomindex();
     imgRindex = randomindex();
-    while (imgLindex === imgMindex || imgLindex === imgRindex || imgMindex === imgRindex || imgLindex === imgRindex || imgRindex === imgMindex || imgMindex === imgLindex) {
+    while (imgLindex === imgMindex || imgLindex === imgRindex || imgMindex === imgRindex || diffpic.includes(imgLindex)|| diffpic.includes(imgMindex)||diffpic.includes(imgRindex)) {
         imgLindex = randomindex();
         imgMindex = randomindex();
         imgRindex = randomindex();
@@ -72,6 +74,11 @@ function renderImages() {
     // console.log(Busmall.allimg[imgLindex].imgpath);
     // console.log(Busmall.allimg[imgMindex].imgpath);
     // console.log(Busmall.allimg[imgRindex].imgpath);
+     //make sure to replace the value every time you run the function
+      diffpic=[];
+     diffpic=[imgLindex,imgMindex,imgRindex];
+     console.log('after',diffpic);
+
     imgL.src = Busmall.allimg[imgLindex].imgpath;
     Busmall.allimg[imgLindex].timesshown++;
     imgM.src = Busmall.allimg[imgMindex].imgpath;
