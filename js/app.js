@@ -16,6 +16,7 @@ let imgRindex = 0;
 let arraynames = [];
 let arrayofvotes = [];
 let arrayofapearing = [];
+
 //contactor function with pascal case first latter will be B
 function Busmall(name, imgpath, timesshown) {
     //create attribute
@@ -28,11 +29,42 @@ function Busmall(name, imgpath, timesshown) {
     //allimg.push(this)
     Busmall.allimg.push(this);
     arraynames.push(this.name);
+    //firstStorage();
 }
 //globel array
 //let allimg=[];
 //how to create new attribute its another way instead of globel array ,array has everything 
+
+firstStorage();
 Busmall.allimg = [];
+
+
+function firstStorage() {
+    //json change obejects to string and has two parts stringfy and parse 
+    let arrayofstring = JSON.stringify(Busmall.allimg);
+    //console.log(arrayofstring);
+    localStorage.setItem('busmallstorage', arrayofstring);
+}
+
+
+function gettingbusmalldata() {
+    //get the data from the local storage
+    let datastorage = localStorage.getItem('busmallstorage');
+    console.log(datastorage);
+
+    //convert string back to array of obeject and we need to use parse
+    let convertdata = JSON.parse(datastorage);
+    console.log(convertdata);
+    if (convertdata !== null) {
+        Busmall.allimg = convertdata;
+    }
+
+    renderImages();
+}
+
+
+
+
 // create instaness with adding new to it
 new Busmall('bag', 'img/bag.jpg');
 new Busmall('banana', 'img/banana.jpg');
@@ -60,13 +92,13 @@ function randomindex() {
 }
 //console.log(randomindex());
 //rendering for images or display them 
-let diffpic=[];
+let diffpic = [];
 function renderImages() {
-    console.log('before',diffpic);
+    console.log('before', diffpic);
     imgLindex = randomindex();
     imgMindex = randomindex();
     imgRindex = randomindex();
-    while (imgLindex === imgMindex || imgLindex === imgRindex || imgMindex === imgRindex || diffpic.includes(imgLindex)|| diffpic.includes(imgMindex)||diffpic.includes(imgRindex)) {
+    while (imgLindex === imgMindex || imgLindex === imgRindex || imgMindex === imgRindex || diffpic.includes(imgLindex) || diffpic.includes(imgMindex) || diffpic.includes(imgRindex)) {
         imgLindex = randomindex();
         imgMindex = randomindex();
         imgRindex = randomindex();
@@ -74,10 +106,10 @@ function renderImages() {
     // console.log(Busmall.allimg[imgLindex].imgpath);
     // console.log(Busmall.allimg[imgMindex].imgpath);
     // console.log(Busmall.allimg[imgRindex].imgpath);
-     //make sure to replace the value every time you run the function
-      diffpic=[];
-     diffpic=[imgLindex,imgMindex,imgRindex];
-     console.log('after',diffpic);
+    //make sure to replace the value every time you run the function
+    diffpic = [];
+    diffpic = [imgLindex, imgMindex, imgRindex];
+    console.log('after', diffpic);
 
     imgL.src = Busmall.allimg[imgLindex].imgpath;
     Busmall.allimg[imgLindex].timesshown++;
@@ -145,7 +177,10 @@ function cliking(event) {
         // imgL.removeEventListener('click', cliking);
         // imgM.removeEventListener('click', cliking);
         // imgR.removeEventListener('click', cliking);
+       
+
     }
+
 }
 ///console.log(Busmall.allimg);
 
@@ -201,3 +236,7 @@ function chart() {
     });
 
 }
+//firstStorage();
+gettingbusmalldata();
+
+
