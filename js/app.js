@@ -35,7 +35,7 @@ function Busmall(name, imgpath, timesshown) {
 //let allimg=[];
 //how to create new attribute its another way instead of globel array ,array has everything 
 
-firstStorage();
+// firstStorage();
 Busmall.allimg = [];
 
 
@@ -144,6 +144,7 @@ function cliking(event) {
         //creatinglist
         renderImages();
     } else {
+        firstStorage();
         allimg1.removeEventListener('click', cliking);
         let devButton = document.getElementById('divButton');
         let getButton = document.createElement('button');
